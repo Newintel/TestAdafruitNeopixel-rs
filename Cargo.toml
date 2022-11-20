@@ -1,0 +1,28 @@
+[package]
+name = "hello"
+version = "0.1.0"
+authors = ["Newintel <franck.labracherie@gmail.com>"]
+edition = "2021"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+pio = ["esp-idf-sys/pio"]
+
+[dependencies]
+anyhow = "1"
+embedded-can = "0.4.1"
+embedded-hal = "0.2.7"
+esp-idf-hal = "0.38.1"
+esp-idf-sys = { version = "0.31.9", features = ["binstart", "native"] }
+
+
+[build-dependencies]
+embuild = "0.30"
+anyhow = "1"
